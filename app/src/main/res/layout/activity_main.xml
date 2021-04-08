@@ -1,0 +1,210 @@
+<!--
+Name: Aidan Watret
+Matriculation Number: S1803674
+-->
+
+<ViewFlipper
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/flip">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="Press to get data"
+            />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:visibility="invisible"
+            />
+
+        <TextView
+            android:id="@+id/txt_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/progress"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:text="Downloading  0%"
+            />
+
+        <TextView
+            android:id="@+id/acknowledgement"
+            android:layout_below="@+id/startButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Contains British Geological Survey materials ©NERC 2019"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3">
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dip">
+            </ListView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <Button
+                    android:id="@+id/searchButton"
+                    android:layout_width="180dip"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dip"
+                    android:text="Press to search"
+
+                    />
+
+                <Button
+                    android:id="@+id/mapButton"
+                    android:layout_width="180dip"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dip"
+                    android:layout_toRightOf="@id/searchButton"
+                    android:text="Map view"
+                    />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/expandedList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dip"
+        android:layout_margin="10dip"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/dateExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dip"
+                android:layout_margin="10dip"
+                android:text="Please enter date range in boxes below to filter search. Earthquake data is only supplied for the last 50 days."
+                />
+
+            <RelativeLayout
+                android:id="@+id/buttonHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dateExplanation"
+                android:layout_centerHorizontal="true">
+
+            <EditText
+                android:id="@+id/startDate"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_margin="10dip"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Enter start date"/>
+
+            <EditText
+                android:id="@+id/endDate"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@id/startDate"
+                android:layout_margin="10dip"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Enter end date"
+                android:enabled="false"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/searchError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buttonHolder"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible"
+                android:textColor="#ff0000"
+                />
+
+            <Button
+                android:id="@+id/clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/searchError"
+                android:layout_centerHorizontal="true"
+                android:text="Clear"
+                android:enabled="true"
+                android:layout_alignLeft="@id/filterSearch"
+                android:layout_alignRight="@id/filterSearch"
+                android:layout_margin="5dip"
+                />
+
+            <Button
+                android:id="@+id/filterSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/clear"
+                android:layout_centerHorizontal="true"
+                android:text="Search"
+                android:enabled="false"
+                android:layout_margin="5dip"
+                />
+
+            <TextView
+                android:id="@+id/searchResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/filterSearch"
+                android:textSize="16dip"
+                android:layout_margin="10dip"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</ViewFlipper>
+
